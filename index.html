@@ -3,87 +3,107 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Intervalle hören – Gehörschulung</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <title>Gehörtraining – Intervalle hören</title>
+  <style>
+    :root{
+      --bg1:#7c3aed; --bg2:#06b6d4; --bg3:#f59e0b;
+      --card:#ffffffee; --text:#172033; --muted:#65708a;
+      --good:#16a34a; --bad:#ef4444; --accent:#7c3aed;
+      --shadow:0 24px 70px rgba(22,31,54,.22);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text); overflow-x:hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,.55), transparent 22rem),
+        radial-gradient(circle at 85% 10%, rgba(255,255,255,.35), transparent 18rem),
+        linear-gradient(135deg,var(--bg1),var(--bg2) 55%,var(--bg3));
+    }
+    .wrap{width:min(1100px,94vw); margin:auto; padding:28px 0 44px}
+    .hero{display:flex; align-items:center; justify-content:space-between; gap:18px; color:white; margin-bottom:22px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.2px}
+    .logo{width:48px;height:48px;border-radius:16px;background:#ffffff25;display:grid;place-items:center;font-size:25px;box-shadow:inset 0 0 0 1px #ffffff55;backdrop-filter:blur(8px)}
+    .badge{background:#ffffff24;border:1px solid #ffffff55;border-radius:999px;padding:10px 14px;font-weight:800;backdrop-filter:blur(8px)}
+    .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.65); border-radius:34px; padding:26px; box-shadow:var(--shadow); backdrop-filter:blur(14px)}
+    h1{font-size:clamp(2rem,4vw,4.2rem);line-height:.95;margin:0 0 12px;font-weight:950;letter-spacing:-.06em}
+    .lead{font-size:1.1rem;color:#eef6ff;max-width:650px;margin:0}
+    h2{margin:0 0 16px;font-size:1.25rem}.muted{color:var(--muted)}
+    .controls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+    label{font-size:.82rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#596174}
+    select,button{font:inherit}
+    select{width:100%;margin-top:7px;border:0;border-radius:16px;background:#f3f6ff;padding:13px 12px;font-weight:800;color:var(--text);outline:2px solid transparent}
+    select:focus{outline-color:#a78bfa;background:white}
+    .stage{display:grid;place-items:center;min-height:310px;position:relative}
+    .circle{width:min(470px,88vw);aspect-ratio:1;border-radius:50%;position:relative;background:radial-gradient(circle,#fff 0 35%,#edf3ff 36% 61%,transparent 62%);box-shadow:inset 0 0 0 2px #fff7}
+    .choice{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px;border:0;border-radius:26px;background:white;box-shadow:0 12px 28px rgba(41,52,86,.16);font-weight:950;cursor:pointer;transition:.18s transform,.18s box-shadow,.18s background;color:#20283a}
+    .choice small{display:block;font-weight:800;color:#7b8498;font-size:.68rem;margin-top:2px}
+    .choice:hover{transform:var(--pos) scale(1.07);box-shadow:0 18px 38px rgba(41,52,86,.22)}
+    .choice.correct{background:#dcfce7;color:#166534}.choice.wrong{background:#fee2e2;color:#991b1b}
+    .center{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:178px;height:178px;border-radius:50%;background:linear-gradient(160deg,#fff,#f5f7ff);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 18px 42px rgba(41,52,86,.18);padding:18px}
+    .note{font-size:2.5rem}.status{font-weight:950;margin-top:8px}.sub{font-size:.82rem;color:var(--muted);margin-top:5px}
+    .actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:16px}.btn{border:0;border-radius:18px;padding:14px 18px;font-weight:950;cursor:pointer;box-shadow:0 10px 24px rgba(41,52,86,.14);transition:.15s transform}.btn:hover{transform:translateY(-2px)}
+    .primary{background:linear-gradient(135deg,#7c3aed,#2563eb);color:white}.secondary{background:#eef2ff;color:#3730a3}.ghost{background:#fff;color:#334155}
+    .feedback{min-height:48px;border-radius:18px;padding:14px 16px;margin-top:16px;font-weight:900;background:#f5f7ff;color:#475569}.feedback.good{background:#dcfce7;color:#166534}.feedback.bad{background:#fee2e2;color:#991b1b}
+    .score{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}.pill{border-radius:999px;background:#f3f6ff;padding:9px 12px;font-weight:900;color:#465168}
+    .footer{color:white;text-align:center;margin-top:18px;font-weight:800;opacity:.9}
+    @media(max-width:850px){.grid{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}.controls{grid-template-columns:1fr}.card{padding:18px;border-radius:26px}.choice{width:76px;height:76px;margin:-38px;border-radius:22px;font-size:.9rem}.center{width:142px;height:142px}.circle{width:min(390px,92vw)}}
+  </style>
 </head>
 <body>
-  <main class="app-shell">
-    <section class="hero card">
+  <main class="wrap">
+    <header class="hero">
       <div>
-        <p class="eyebrow">🎧 Gehörtraining</p>
+        <div class="brand"><div class="logo">🎧</div><span>Gehörtraining</span></div>
         <h1>Intervalle hören</h1>
-        <p class="subtitle">Starte von deinem Ton, höre einen zufälligen Intervallsprung und tippe auf die richtige Antwort.</p>
+        <p class="lead">Starte von deinem Ton, höre einen zufälligen Intervallsprung und tippe auf die richtige Antwort.</p>
       </div>
-      <div class="score-bubble" aria-live="polite">
-        <span id="score">0</span><small>richtig</small>
-      </div>
-    </section>
+      <div class="badge">Für 7–17 Jahre · spielerisch</div>
+    </header>
 
-    <section class="controls card" aria-label="Einstellungen">
-      <label>
-        Startton
-        <select id="rootNote">
-          <option value="48">C3</option><option value="49">C♯3 / D♭3</option><option value="50">D3</option>
-          <option value="51">D♯3 / E♭3</option><option value="52">E3</option><option value="53">F3</option>
-          <option value="54">F♯3 / G♭3</option><option value="55">G3</option><option value="56">G♯3 / A♭3</option>
-          <option value="57">A3</option><option value="58">A♯3 / B♭3</option><option value="59">B3 / H3</option>
-          <option value="60" selected>C4</option><option value="61">C♯4 / D♭4</option><option value="62">D4</option>
-          <option value="63">D♯4 / E♭4</option><option value="64">E4</option><option value="65">F4</option>
-          <option value="66">F♯4 / G♭4</option><option value="67">G4</option><option value="68">G♯4 / A♭4</option>
-          <option value="69">A4</option><option value="70">A♯4 / B♭4</option><option value="71">B4 / H4</option>
-        </select>
-      </label>
-
-      <label>
-        Richtung
-        <select id="directionMode">
-          <option value="up" selected>aufwärts</option>
-          <option value="down">abwärts</option>
-          <option value="both">zufällig auf/ab</option>
-        </select>
-      </label>
-
-      <label>
-        Klang
-        <select id="playMode">
-          <option value="melodic" selected>nacheinander</option>
-          <option value="harmonic">gleichzeitig</option>
-          <option value="both">erst nacheinander, dann zusammen</option>
-        </select>
-      </label>
-    </section>
-
-    <section class="game card">
-      <div class="stage">
-        <div class="orb" id="orb" aria-hidden="true">
-          <div class="pulse"></div>
-          <div class="note-icon">♪</div>
+    <section class="grid">
+      <div class="card">
+        <h2>Setup</h2>
+        <p class="muted">Wähle Startton, Richtung und Klang. Danach beginnt jede Runde mit einem neuen Zufallsintervall bis zur Undezime.</p>
+        <div class="controls">
+          <div><label>Startton<select id="root"></select></label></div>
+          <div><label>Richtung<select id="direction"><option value="up">aufwärts</option><option value="down">abwärts</option><option value="random">zufällig</option></select></label></div>
+          <div><label>Klang<select id="mode"><option value="melodic">nacheinander</option><option value="harmonic">gleichzeitig</option></select></label></div>
         </div>
-        <div class="status">
-          <p id="promptText">Bereit für dein erstes Intervall?</p>
-          <strong id="feedback">Drücke „Neues Intervall“.</strong>
+        <div class="actions">
+          <button class="btn primary" id="newBtn">✨ Neues Intervall</button>
+          <button class="btn secondary" id="replayBtn">▶︎ Nochmal hören</button>
+          <button class="btn ghost" id="showBtn">👀 Intervall anzeigen</button>
+        </div>
+        <div id="feedback" class="feedback">Bereit für dein erstes Intervall?</div>
+        <div class="score">
+          <span class="pill">Richtig: <b id="right">0</b></span>
+          <span class="pill">Versuche: <b id="tries">0</b></span>
+          <span class="pill">Trefferquote: <b id="percent">0%</b></span>
         </div>
       </div>
-
-      <div class="action-row">
-        <button class="primary" id="newInterval">✨ Neues Intervall</button>
-        <button id="replay">▶ Noch einmal hören</button>
-        <button id="showAnswer">👀 Intervall anzeigen</button>
-      </div>
-
-      <div class="circle-wrap" aria-label="Intervallauswahl">
-        <div class="interval-circle" id="intervalCircle"></div>
+      <div class="card stage">
+        <div class="circle" id="circle"><div class="center"><div class="note">♪</div><div class="status" id="status">Hören & wählen</div><div class="sub">Prime bis Undezime</div></div></div>
       </div>
     </section>
-
-    <footer>
-      <span>Bis zur Undezime: Prime bis Undezime.</span>
-      <span>Funktioniert direkt auf GitHub Pages.</span>
-    </footer>
+    <div class="footer">Funktioniert direkt auf GitHub Pages und eingebettet in Google Sites.</div>
   </main>
-  <script src="script.js"></script>
+<script>
+const notes={C3:130.81,D3:146.83,E3:164.81,F3:174.61,G3:196,A3:220,B3:246.94,C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392,A4:440,B4:493.88,C5:523.25};
+const intervals=[['Prime',0],['Sekunde',2],['Terz',4],['Quarte',5],['Quinte',7],['Sexte',9],['Septime',11],['Oktave',12],['None',14],['Dezime',16],['Undezime',17]];
+const root=document.getElementById('root'), circle=document.getElementById('circle'), feedback=document.getElementById('feedback'), statusEl=document.getElementById('status');
+let audioCtx,current=null,right=0,tries=0,answered=false;
+Object.keys(notes).forEach(n=>{let o=document.createElement('option');o.value=n;o.textContent=n;if(n==='C4')o.selected=true;root.appendChild(o)});
+intervals.forEach((it,i)=>{let b=document.createElement('button');b.className='choice';b.innerHTML=it[0]+'<small>'+it[1]+' HT</small>';let angle=(i/intervals.length)*Math.PI*2-Math.PI/2;let r=185;b.style.setProperty('--pos',`translate(${Math.cos(angle)*r}px,${Math.sin(angle)*r}px)`);b.style.transform=`var(--pos)`;b.onclick=()=>guess(it[0],b);circle.appendChild(b)});
+function ctx(){audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();return audioCtx}
+function tone(freq,start,dur){const c=ctx(),o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0.0001,start);g.gain.exponentialRampToValueAtTime(.32,start+.03);g.gain.exponentialRampToValueAtTime(0.0001,start+dur);o.connect(g).connect(c.destination);o.start(start);o.stop(start+dur+.03)}
+function play(){if(!current)return;const c=ctx(),now=c.currentTime+.05;let f1=notes[root.value],dir=current.dir==='down'?-1:1,f2=f1*Math.pow(2,dir*current.semi/12);if(document.getElementById('mode').value==='harmonic'){tone(f1,now,.85);tone(f2,now,.85)}else{tone(f1,now,.42);tone(f2,now+.52,.55)}}
+function newInterval(){document.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));let it=intervals[Math.floor(Math.random()*intervals.length)],d=document.getElementById('direction').value;if(d==='random')d=Math.random()<.5?'up':'down';current={name:it[0],semi:it[1],dir:d};answered=false;statusEl.textContent='Jetzt hören';feedback.className='feedback';feedback.textContent='Welches Intervall war das?';play()}
+function updateScore(){document.getElementById('right').textContent=right;document.getElementById('tries').textContent=tries;document.getElementById('percent').textContent=tries?Math.round(right/tries*100)+'%':'0%'}
+function guess(name,btn){if(!current||answered)return;answered=true;tries++;let ok=name===current.name;if(ok){right++;btn.classList.add('correct');feedback.className='feedback good';feedback.textContent='Richtig! Super gehört 🎉'}else{btn.classList.add('wrong');[...document.querySelectorAll('.choice')].find(b=>b.textContent.startsWith(current.name)).classList.add('correct');feedback.className='feedback bad';feedback.textContent='Fast! Richtig war: '+current.name+'.'}statusEl.textContent=ok?'Treffer!':'Weiter üben';updateScore()}
+document.getElementById('newBtn').onclick=newInterval;document.getElementById('replayBtn').onclick=play;document.getElementById('showBtn').onclick=()=>{if(current){feedback.className='feedback';feedback.textContent='Lösung: '+current.name+' ('+(current.dir==='up'?'aufwärts':'abwärts')+')'}};
+updateScore();
+</script>
 </body>
 </html>
