@@ -3,79 +3,87 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gehörschulung – Intervallsprünge</title>
+  <title>Intervalle hören – Gehörschulung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="app" aria-labelledby="title">
-    <section class="hero">
+  <main class="app-shell">
+    <section class="hero card">
       <div>
-        <p class="eyebrow">Gehörschulung</p>
-        <h1 id="title">Intervallsprünge erkennen</h1>
-        <p class="intro">Höre einen zufälligen Sprung vom Startton aus und wähle das passende Intervall.</p>
+        <p class="eyebrow">🎧 Gehörtraining</p>
+        <h1>Intervalle hören</h1>
+        <p class="subtitle">Starte von deinem Ton, höre einen zufälligen Intervallsprung und tippe auf die richtige Antwort.</p>
       </div>
-      <div class="score" aria-live="polite">
-        <span id="scoreCorrect">0</span>/<span id="scoreTotal">0</span>
+      <div class="score-bubble" aria-live="polite">
+        <span id="score">0</span><small>richtig</small>
       </div>
     </section>
 
-    <section class="panel controls" aria-label="Einstellungen">
+    <section class="controls card" aria-label="Einstellungen">
       <label>
         Startton
-        <select id="rootNote"></select>
-      </label>
-      <label>
-        Oktave
-        <select id="octave">
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4" selected>4</option>
-          <option value="5">5</option>
+        <select id="rootNote">
+          <option value="48">C3</option><option value="49">C♯3 / D♭3</option><option value="50">D3</option>
+          <option value="51">D♯3 / E♭3</option><option value="52">E3</option><option value="53">F3</option>
+          <option value="54">F♯3 / G♭3</option><option value="55">G3</option><option value="56">G♯3 / A♭3</option>
+          <option value="57">A3</option><option value="58">A♯3 / B♭3</option><option value="59">B3 / H3</option>
+          <option value="60" selected>C4</option><option value="61">C♯4 / D♭4</option><option value="62">D4</option>
+          <option value="63">D♯4 / E♭4</option><option value="64">E4</option><option value="65">F4</option>
+          <option value="66">F♯4 / G♭4</option><option value="67">G4</option><option value="68">G♯4 / A♭4</option>
+          <option value="69">A4</option><option value="70">A♯4 / B♭4</option><option value="71">B4 / H4</option>
         </select>
       </label>
+
       <label>
         Richtung
-        <select id="direction">
+        <select id="directionMode">
           <option value="up" selected>aufwärts</option>
           <option value="down">abwärts</option>
           <option value="both">zufällig auf/ab</option>
         </select>
       </label>
+
       <label>
         Klang
         <select id="playMode">
           <option value="melodic" selected>nacheinander</option>
           <option value="harmonic">gleichzeitig</option>
-          <option value="both">erst nacheinander, dann gleichzeitig</option>
+          <option value="both">erst nacheinander, dann zusammen</option>
         </select>
       </label>
     </section>
 
-    <section class="panel actions" aria-label="Aktionen">
-      <button id="newInterval" class="primary">Neues Intervall</button>
-      <button id="replay">Nochmal abspielen</button>
-      <button id="showInterval">Show interval</button>
-      <button id="resetScore" class="ghost">Score zurücksetzen</button>
-    </section>
-
-    <section class="feedback" aria-live="polite">
-      <div id="feedbackText">Klicke auf „Neues Intervall“.</div>
-      <div id="answerText" class="answer"></div>
-    </section>
-
-    <section class="interval-wheel" aria-label="Intervall auswählen">
-      <div class="wheel-center">
-        <span>Wähle</span>
-        <strong>Intervall</strong>
+    <section class="game card">
+      <div class="stage">
+        <div class="orb" id="orb" aria-hidden="true">
+          <div class="pulse"></div>
+          <div class="note-icon">♪</div>
+        </div>
+        <div class="status">
+          <p id="promptText">Bereit für dein erstes Intervall?</p>
+          <strong id="feedback">Drücke „Neues Intervall“.</strong>
+        </div>
       </div>
-      <div id="intervalButtons"></div>
+
+      <div class="action-row">
+        <button class="primary" id="newInterval">✨ Neues Intervall</button>
+        <button id="replay">▶ Noch einmal hören</button>
+        <button id="showAnswer">👀 Intervall anzeigen</button>
+      </div>
+
+      <div class="circle-wrap" aria-label="Intervallauswahl">
+        <div class="interval-circle" id="intervalCircle"></div>
+      </div>
     </section>
 
     <footer>
-      <p>Umfang: Intervalle bis zur Undezime. Tipp: „Show interval“ zeigt die Lösung ohne Score-Wertung.</p>
+      <span>Bis zur Undezime: Prime bis Undezime.</span>
+      <span>Funktioniert direkt auf GitHub Pages.</span>
     </footer>
   </main>
-
   <script src="script.js"></script>
 </body>
 </html>
