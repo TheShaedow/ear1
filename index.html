@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gehörschulung – Intervallsprünge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app" aria-labelledby="title">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Gehörschulung</p>
+        <h1 id="title">Intervallsprünge erkennen</h1>
+        <p class="intro">Höre einen zufälligen Sprung vom Startton aus und wähle das passende Intervall.</p>
+      </div>
+      <div class="score" aria-live="polite">
+        <span id="scoreCorrect">0</span>/<span id="scoreTotal">0</span>
+      </div>
+    </section>
+
+    <section class="panel controls" aria-label="Einstellungen">
+      <label>
+        Startton
+        <select id="rootNote"></select>
+      </label>
+      <label>
+        Oktave
+        <select id="octave">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4" selected>4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+      <label>
+        Richtung
+        <select id="direction">
+          <option value="up" selected>aufwärts</option>
+          <option value="down">abwärts</option>
+          <option value="both">zufällig auf/ab</option>
+        </select>
+      </label>
+      <label>
+        Klang
+        <select id="playMode">
+          <option value="melodic" selected>nacheinander</option>
+          <option value="harmonic">gleichzeitig</option>
+          <option value="both">erst nacheinander, dann gleichzeitig</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="panel actions" aria-label="Aktionen">
+      <button id="newInterval" class="primary">Neues Intervall</button>
+      <button id="replay">Nochmal abspielen</button>
+      <button id="showInterval">Show interval</button>
+      <button id="resetScore" class="ghost">Score zurücksetzen</button>
+    </section>
+
+    <section class="feedback" aria-live="polite">
+      <div id="feedbackText">Klicke auf „Neues Intervall“.</div>
+      <div id="answerText" class="answer"></div>
+    </section>
+
+    <section class="interval-wheel" aria-label="Intervall auswählen">
+      <div class="wheel-center">
+        <span>Wähle</span>
+        <strong>Intervall</strong>
+      </div>
+      <div id="intervalButtons"></div>
+    </section>
+
+    <footer>
+      <p>Umfang: Intervalle bis zur Undezime. Tipp: „Show interval“ zeigt die Lösung ohne Score-Wertung.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
