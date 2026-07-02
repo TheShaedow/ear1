@@ -6,104 +6,73 @@
   <title>Gehörtraining – Intervalle hören</title>
   <style>
     :root{
-      --bg1:#7c3aed; --bg2:#06b6d4; --bg3:#f59e0b;
-      --card:#ffffffee; --text:#172033; --muted:#65708a;
-      --good:#16a34a; --bad:#ef4444; --accent:#7c3aed;
-      --shadow:0 24px 70px rgba(22,31,54,.22);
+      --bg1:#111827; --bg2:#312e81; --card:rgba(255,255,255,.92); --ink:#14213d;
+      --muted:#64748b; --brand:#7c3aed; --brand2:#06b6d4; --good:#10b981; --bad:#ef4444;
+      --gold:#f59e0b; --shadow:0 28px 80px rgba(15,23,42,.28); --radius:30px;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0; min-height:100vh; font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text); overflow-x:hidden;
-      background:
-        radial-gradient(circle at 12% 18%, rgba(255,255,255,.55), transparent 22rem),
-        radial-gradient(circle at 85% 10%, rgba(255,255,255,.35), transparent 18rem),
-        linear-gradient(135deg,var(--bg1),var(--bg2) 55%,var(--bg3));
-    }
-    .wrap{width:min(1100px,94vw); margin:auto; padding:28px 0 44px}
-    .hero{display:flex; align-items:center; justify-content:space-between; gap:18px; color:white; margin-bottom:22px}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.2px}
-    .logo{width:48px;height:48px;border-radius:16px;background:#ffffff25;display:grid;place-items:center;font-size:25px;box-shadow:inset 0 0 0 1px #ffffff55;backdrop-filter:blur(8px)}
-    .badge{background:#ffffff24;border:1px solid #ffffff55;border-radius:999px;padding:10px 14px;font-weight:800;backdrop-filter:blur(8px)}
-    .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch}
-    .card{background:var(--card); border:1px solid rgba(255,255,255,.65); border-radius:34px; padding:26px; box-shadow:var(--shadow); backdrop-filter:blur(14px)}
-    h1{font-size:clamp(2rem,4vw,4.2rem);line-height:.95;margin:0 0 12px;font-weight:950;letter-spacing:-.06em}
-    .lead{font-size:1.1rem;color:#eef6ff;max-width:650px;margin:0}
-    h2{margin:0 0 16px;font-size:1.25rem}.muted{color:var(--muted)}
-    .controls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-    label{font-size:.82rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#596174}
-    select,button{font:inherit}
-    select{width:100%;margin-top:7px;border:0;border-radius:16px;background:#f3f6ff;padding:13px 12px;font-weight:800;color:var(--text);outline:2px solid transparent}
-    select:focus{outline-color:#a78bfa;background:white}
-    .stage{display:grid;place-items:center;min-height:310px;position:relative}
-    .circle{width:min(470px,88vw);aspect-ratio:1;border-radius:50%;position:relative;background:radial-gradient(circle,#fff 0 35%,#edf3ff 36% 61%,transparent 62%);box-shadow:inset 0 0 0 2px #fff7}
-    .choice{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px;border:0;border-radius:26px;background:white;box-shadow:0 12px 28px rgba(41,52,86,.16);font-weight:950;cursor:pointer;transition:.18s transform,.18s box-shadow,.18s background;color:#20283a}
-    .choice small{display:block;font-weight:800;color:#7b8498;font-size:.68rem;margin-top:2px}
-    .choice:hover{transform:var(--pos) scale(1.07);box-shadow:0 18px 38px rgba(41,52,86,.22)}
-    .choice.correct{background:#dcfce7;color:#166534}.choice.wrong{background:#fee2e2;color:#991b1b}
-    .center{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:178px;height:178px;border-radius:50%;background:linear-gradient(160deg,#fff,#f5f7ff);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 18px 42px rgba(41,52,86,.18);padding:18px}
-    .note{font-size:2.5rem}.status{font-weight:950;margin-top:8px}.sub{font-size:.82rem;color:var(--muted);margin-top:5px}
-    .actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:16px}.btn{border:0;border-radius:18px;padding:14px 18px;font-weight:950;cursor:pointer;box-shadow:0 10px 24px rgba(41,52,86,.14);transition:.15s transform}.btn:hover{transform:translateY(-2px)}
-    .primary{background:linear-gradient(135deg,#7c3aed,#2563eb);color:white}.secondary{background:#eef2ff;color:#3730a3}.ghost{background:#fff;color:#334155}
-    .feedback{min-height:48px;border-radius:18px;padding:14px 16px;margin-top:16px;font-weight:900;background:#f5f7ff;color:#475569}.feedback.good{background:#dcfce7;color:#166534}.feedback.bad{background:#fee2e2;color:#991b1b}
-    .score{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}.pill{border-radius:999px;background:#f3f6ff;padding:9px 12px;font-weight:900;color:#465168}
-    .footer{color:white;text-align:center;margin-top:18px;font-weight:800;opacity:.9}
-    @media(max-width:850px){.grid{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}.controls{grid-template-columns:1fr}.card{padding:18px;border-radius:26px}.choice{width:76px;height:76px;margin:-38px;border-radius:22px;font-size:.9rem}.center{width:142px;height:142px}.circle{width:min(390px,92vw)}}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100%;font-family:Inter,ui-rounded,"SF Pro Rounded",system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}
+    body{background:radial-gradient(circle at 10% 10%,#38bdf8 0 16%,transparent 34%),radial-gradient(circle at 90% 0,#f472b6 0 13%,transparent 32%),linear-gradient(135deg,var(--bg1),var(--bg2));padding:22px;overflow-x:hidden}
+    .app{max-width:1180px;margin:0 auto}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:18px;color:white}.logo{display:flex;align-items:center;gap:12px;font-weight:900;font-size:clamp(22px,3vw,34px)}
+    .logo .mark{width:48px;height:48px;border-radius:18px;background:linear-gradient(135deg,#fff,#c7d2fe);display:grid;place-items:center;color:#4f46e5;box-shadow:0 12px 30px rgba(0,0,0,.22)}
+    .scorebar{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.pill{background:rgba(255,255,255,.17);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(12px);color:white;border-radius:999px;padding:10px 14px;font-weight:800}.pill b{color:#fde68a}
+    .hero{background:var(--card);border:1px solid rgba(255,255,255,.55);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:370px 1fr}.side{padding:28px;background:linear-gradient(180deg,rgba(124,58,237,.1),rgba(6,182,212,.08))}.main{padding:28px;position:relative}
+    h1{font-size:clamp(30px,5vw,56px);line-height:.95;margin:0 0 12px}.lead{font-size:18px;color:var(--muted);margin:0 0 22px}.settings{display:grid;gap:14px}.field{background:white;border-radius:20px;padding:14px 16px;box-shadow:0 10px 24px rgba(15,23,42,.08)}label{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#64748b;font-weight:900;display:block;margin-bottom:7px}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}select,input[type=range]{width:100%;accent-color:var(--brand)}select{appearance:none;border:0;background:#f1f5f9;border-radius:14px;padding:12px;font-size:16px;font-weight:800;color:#1e293b}.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{display:flex;align-items:center;gap:7px;background:#f8fafc;border-radius:12px;padding:9px;font-weight:800}.check input{accent-color:var(--brand)}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}.btn{border:0;border-radius:18px;padding:14px 18px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 12px 22px rgba(15,23,42,.12);transition:.18s transform,.18s filter}.btn:hover{transform:translateY(-2px)}.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:white}.secondary{background:white;color:#312e81}.ghost{background:#eef2ff;color:#4338ca}.tiny{padding:9px 12px;border-radius:13px;font-size:14px}
+    .stage{display:grid;place-items:center;min-height:535px}.wheel{position:relative;width:min(72vw,540px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#fff 0 32%,#eef2ff 33% 48%,#dbeafe 49% 50%,transparent 51%);display:grid;place-items:center}.center{width:42%;aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,#fff,#f8fafc);box-shadow:inset 0 0 0 1px #e2e8f0,0 22px 45px rgba(15,23,42,.14);display:grid;place-items:center;text-align:center;padding:18px;z-index:2}.note{font-size:44px;font-weight:1000}.sub{font-weight:900;color:#64748b}.choice{position:absolute;left:50%;top:50%;width:94px;height:94px;margin:-47px;border:0;border-radius:28px;background:white;color:#312e81;font-weight:1000;font-size:14px;box-shadow:0 16px 32px rgba(15,23,42,.17);cursor:pointer;transition:.18s}.choice:hover{transform:var(--pos) scale(1.08)!important;background:#fef3c7}.choice.good{background:#dcfce7;color:#047857}.choice.bad{background:#fee2e2;color:#b91c1c;animation:shake .33s}.choice.reveal{outline:5px solid #f59e0b}.feedback{min-height:44px;text-align:center;font-size:25px;font-weight:1000;margin-top:4px}.feedback.good{color:var(--good)}.feedback.bad{color:var(--bad)}@keyframes shake{25%{translate:-5px 0}50%{translate:5px 0}75%{translate:-4px 0}}
+    .piano{height:120px;background:#111827;border-radius:24px;padding:12px;display:flex;position:relative;margin-top:18px;box-shadow:inset 0 -8px 18px rgba(0,0,0,.25)}.key{flex:1;border:1px solid #cbd5e1;background:linear-gradient(#fff,#e5e7eb);border-radius:0 0 10px 10px;position:relative}.key.on{background:linear-gradient(#fde68a,#fff7ed)}.key.black{position:absolute;width:5.5%;height:62%;background:linear-gradient(#1f2937,#030712);border:0;border-radius:0 0 9px 9px;z-index:3;top:12px}.foot{color:rgba(255,255,255,.75);text-align:center;margin:14px;font-size:13px}.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}.bit{position:absolute;width:10px;height:18px;border-radius:4px;background:#fde047;animation:fall 900ms ease-out forwards}@keyframes fall{to{transform:translateY(120vh) rotate(540deg);opacity:0}}
+    @media(max-width:900px){body{padding:12px}.hero{grid-template-columns:1fr}.side,.main{padding:18px}.stage{min-height:500px}.wheel{width:min(96vw,500px)}.choice{width:78px;height:78px;margin:-39px;font-size:12px;border-radius:23px}.top{align-items:flex-start;flex-direction:column}.scorebar{justify-content:flex-start}.piano{height:92px}.checks{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <header class="hero">
-      <div>
-        <div class="brand"><div class="logo">🎧</div><span>Gehörtraining</span></div>
-        <h1>Intervalle hören</h1>
-        <p class="lead">Starte von deinem Ton, höre einen zufälligen Intervallsprung und tippe auf die richtige Antwort.</p>
-      </div>
-      <div class="badge">Für 7–17 Jahre · spielerisch</div>
-    </header>
-
-    <section class="grid">
-      <div class="card">
-        <h2>Setup</h2>
-        <p class="muted">Wähle Startton, Richtung und Klang. Danach beginnt jede Runde mit einem neuen Zufallsintervall bis zur Undezime.</p>
-        <div class="controls">
-          <div><label>Startton<select id="root"></select></label></div>
-          <div><label>Richtung<select id="direction"><option value="up">aufwärts</option><option value="down">abwärts</option><option value="random">zufällig</option></select></label></div>
-          <div><label>Klang<select id="mode"><option value="melodic">nacheinander</option><option value="harmonic">gleichzeitig</option></select></label></div>
+  <div class="app">
+    <header class="top"><div class="logo"><div class="mark">🎧</div><div>Gehörtraining<br><small style="font-size:14px;opacity:.78">Intervalle hören mit Piano-Sound</small></div></div><div class="scorebar"><div class="pill">Punkte <b id="score">0</b></div><div class="pill">Serie <b id="streak">0</b></div><div class="pill">Quote <b id="rate">–</b></div></div></header>
+    <section class="hero">
+      <aside class="side"><h1>Intervalle hören</h1><p class="lead">Wähle einen Startton, höre den Sprung und tippe auf das richtige Intervall im Kreis.</p>
+        <div class="settings">
+          <div class="field"><label>Startton</label><select id="start"></select></div>
+          <div class="field"><label>Richtung</label><select id="direction"><option value="up">aufwärts</option><option value="down">abwärts</option><option value="mixed">gemischt</option></select></div>
+          <div class="field"><label>Klangart</label><select id="mode"><option value="melodic">nacheinander</option><option value="harmonic">gleichzeitig</option><option value="both">erst nacheinander, dann zusammen</option></select></div>
+          <div class="field"><label>Schwierigkeit: <span id="levelText">bis Oktave</span></label><input id="level" type="range" min="1" max="5" value="4"></div>
+          <div class="field"><label>Intervalle üben</label><div class="checks" id="intervalChecks"></div></div>
         </div>
-        <div class="actions">
-          <button class="btn primary" id="newBtn">✨ Neues Intervall</button>
-          <button class="btn secondary" id="replayBtn">▶︎ Nochmal hören</button>
-          <button class="btn ghost" id="showBtn">👀 Intervall anzeigen</button>
-        </div>
-        <div id="feedback" class="feedback">Bereit für dein erstes Intervall?</div>
-        <div class="score">
-          <span class="pill">Richtig: <b id="right">0</b></span>
-          <span class="pill">Versuche: <b id="tries">0</b></span>
-          <span class="pill">Trefferquote: <b id="percent">0%</b></span>
-        </div>
-      </div>
-      <div class="card stage">
-        <div class="circle" id="circle"><div class="center"><div class="note">♪</div><div class="status" id="status">Hören & wählen</div><div class="sub">Prime bis Undezime</div></div></div>
-      </div>
+        <div class="actions"><button class="btn primary" id="newBtn">✨ Neues Intervall</button><button class="btn secondary" id="replayBtn">▶ Noch einmal</button><button class="btn ghost" id="showBtn">👀 Anzeigen</button></div>
+      </aside>
+      <main class="main"><div class="stage"><div><div class="wheel" id="wheel"><div class="center"><div><div class="note" id="noteIcon">🎹</div><div class="sub" id="centerText">Bereit?</div></div></div></div><div class="feedback" id="feedback">Drücke „Neues Intervall“.</div><div class="piano" id="piano"></div></div></div></main>
     </section>
-    <div class="footer">Funktioniert direkt auf GitHub Pages und eingebettet in Google Sites.</div>
-  </main>
+    <div class="foot">GitHub Pages ready · komplett ohne Server · optimiert für Google Sites</div>
+  </div><div class="confetti" id="confetti"></div>
 <script>
-const notes={C3:130.81,D3:146.83,E3:164.81,F3:174.61,G3:196,A3:220,B3:246.94,C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392,A4:440,B4:493.88,C5:523.25};
-const intervals=[['Prime',0],['Sekunde',2],['Terz',4],['Quarte',5],['Quinte',7],['Sexte',9],['Septime',11],['Oktave',12],['None',14],['Dezime',16],['Undezime',17]];
-const root=document.getElementById('root'), circle=document.getElementById('circle'), feedback=document.getElementById('feedback'), statusEl=document.getElementById('status');
-let audioCtx,current=null,right=0,tries=0,answered=false;
-Object.keys(notes).forEach(n=>{let o=document.createElement('option');o.value=n;o.textContent=n;if(n==='C4')o.selected=true;root.appendChild(o)});
-intervals.forEach((it,i)=>{let b=document.createElement('button');b.className='choice';b.innerHTML=it[0]+'<small>'+it[1]+' HT</small>';let angle=(i/intervals.length)*Math.PI*2-Math.PI/2;let r=185;b.style.setProperty('--pos',`translate(${Math.cos(angle)*r}px,${Math.sin(angle)*r}px)`);b.style.transform=`var(--pos)`;b.onclick=()=>guess(it[0],b);circle.appendChild(b)});
-function ctx(){audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();return audioCtx}
-function tone(freq,start,dur){const c=ctx(),o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0.0001,start);g.gain.exponentialRampToValueAtTime(.32,start+.03);g.gain.exponentialRampToValueAtTime(0.0001,start+dur);o.connect(g).connect(c.destination);o.start(start);o.stop(start+dur+.03)}
-function play(){if(!current)return;const c=ctx(),now=c.currentTime+.05;let f1=notes[root.value],dir=current.dir==='down'?-1:1,f2=f1*Math.pow(2,dir*current.semi/12);if(document.getElementById('mode').value==='harmonic'){tone(f1,now,.85);tone(f2,now,.85)}else{tone(f1,now,.42);tone(f2,now+.52,.55)}}
-function newInterval(){document.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));let it=intervals[Math.floor(Math.random()*intervals.length)],d=document.getElementById('direction').value;if(d==='random')d=Math.random()<.5?'up':'down';current={name:it[0],semi:it[1],dir:d};answered=false;statusEl.textContent='Jetzt hören';feedback.className='feedback';feedback.textContent='Welches Intervall war das?';play()}
-function updateScore(){document.getElementById('right').textContent=right;document.getElementById('tries').textContent=tries;document.getElementById('percent').textContent=tries?Math.round(right/tries*100)+'%':'0%'}
-function guess(name,btn){if(!current||answered)return;answered=true;tries++;let ok=name===current.name;if(ok){right++;btn.classList.add('correct');feedback.className='feedback good';feedback.textContent='Richtig! Super gehört 🎉'}else{btn.classList.add('wrong');[...document.querySelectorAll('.choice')].find(b=>b.textContent.startsWith(current.name)).classList.add('correct');feedback.className='feedback bad';feedback.textContent='Fast! Richtig war: '+current.name+'.'}statusEl.textContent=ok?'Treffer!':'Weiter üben';updateScore()}
-document.getElementById('newBtn').onclick=newInterval;document.getElementById('replayBtn').onclick=play;document.getElementById('showBtn').onclick=()=>{if(current){feedback.className='feedback';feedback.textContent='Lösung: '+current.name+' ('+(current.dir==='up'?'aufwärts':'abwärts')+')'}};
-updateScore();
+(() => {
+  const noteNames=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  const intervals=[['Prime',0],['kleine Sekunde',1],['große Sekunde',2],['kleine Terz',3],['große Terz',4],['Quarte',5],['Tritonus',6],['Quinte',7],['kleine Sexte',8],['große Sexte',9],['kleine Septime',10],['große Septime',11],['Oktave',12],['kleine None',13],['große None',14],['kleine Dezime',15],['große Dezime',16],['Undezime',17]];
+  const levelMax=[5,7,9,12,14,17];
+  const el=id=>document.getElementById(id); let audio,current=null,score=0,streak=0,total=0,right=0;
+  function midiToFreq(m){return 440*Math.pow(2,(m-69)/12)}
+  function initAudio(){ if(!audio) audio=new (window.AudioContext||window.webkitAudioContext)(); if(audio.state==='suspended') audio.resume(); }
+  function pianoTone(midi, when=0, dur=.95, gain=.22){
+    initAudio(); const t=audio.currentTime+when, out=audio.createGain(), comp=audio.createDynamicsCompressor(); out.connect(comp); comp.connect(audio.destination);
+    out.gain.setValueAtTime(0.0001,t); out.gain.exponentialRampToValueAtTime(gain,t+.012); out.gain.exponentialRampToValueAtTime(gain*.38,t+.13); out.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    [[1,1],[2,.45],[3,.18],[4,.09],[5,.05]].forEach(([mul,amp],i)=>{ const o=audio.createOscillator(), g=audio.createGain(); o.type=i? 'triangle':'sine'; o.frequency.setValueAtTime(midiToFreq(midi)*mul,t); g.gain.value=amp; o.connect(g); g.connect(out); o.start(t); o.stop(t+dur+.05); });
+    const thump=audio.createOscillator(), tg=audio.createGain(); thump.type='sine'; thump.frequency.setValueAtTime(midiToFreq(midi)/2,t); tg.gain.setValueAtTime(.08,t); tg.gain.exponentialRampToValueAtTime(.0001,t+.08); thump.connect(tg); tg.connect(out); thump.start(t); thump.stop(t+.09);
+    lightKey(midi, dur*1000);
+  }
+  function play(){ if(!current) return; const m=el('mode').value; if(m==='harmonic'){pianoTone(current.a,0,1.4,.18);pianoTone(current.b,0,1.4,.18)} else if(m==='both'){pianoTone(current.a,0,.75);pianoTone(current.b,.82,.95);pianoTone(current.a,2,1.2,.16);pianoTone(current.b,2,1.2,.16)} else {pianoTone(current.a,0,.8);pianoTone(current.b,.9,1)} }
+  function build(){
+    for(let m=48;m<=72;m++){ if(!noteNames[m%12].includes('#')){ const o=document.createElement('option'); o.value=m; o.textContent=noteNames[m%12]+(Math.floor(m/12)-1); if(m===60)o.selected=true; el('start').appendChild(o); }}
+    intervals.forEach(([n,s])=>{ const lab=document.createElement('label'); lab.className='check'; lab.innerHTML=`<input type="checkbox" value="${s}" checked> ${n}`; el('intervalChecks').appendChild(lab); });
+    drawPiano(); updateWheel();
+  }
+  function allowed(){ const max=levelMax[+el('level').value]; return [...document.querySelectorAll('#intervalChecks input:checked')].map(x=>+x.value).filter(v=>v<=max); }
+  function updateWheel(){ el('levelText').textContent=['bis Quarte','bis Quinte','bis Sexte','bis Oktave','bis None','bis Undezime'][+el('level').value]; const vals=allowed(); el('wheel').querySelectorAll('.choice').forEach(x=>x.remove()); vals.forEach((v,i)=>{ const a=(i/vals.length)*Math.PI*2-Math.PI/2, r=43; const b=document.createElement('button'); b.className='choice'; b.textContent=intervals.find(x=>x[1]===v)[0]; b.dataset.v=v; b.style.setProperty('--pos',`translate(${Math.cos(a)*r}vw,${Math.sin(a)*r}vw)`); b.style.transform=`translate(${Math.cos(a)*210}px,${Math.sin(a)*210}px)`; b.onclick=()=>answer(v,b); el('wheel').appendChild(b); }); }
+  function newInterval(){ const vals=allowed(); if(!vals.length){el('feedback').textContent='Bitte mindestens ein Intervall aktivieren.';return} const start=+el('start').value, step=vals[Math.floor(Math.random()*vals.length)]; let dir=el('direction').value; if(dir==='mixed') dir=Math.random()<.5?'up':'down'; current={a:start,b:start+(dir==='up'?step:-step),step,dir}; el('centerText').textContent=noteNames[start%12]+(Math.floor(start/12)-1)+' → ?'; el('feedback').textContent='Hör genau hin …'; document.querySelectorAll('.choice').forEach(b=>b.className='choice'); play(); }
+  function answer(v,btn){ if(!current)return; total++; if(v===current.step){right++;score+=10+streak*2;streak++;btn.classList.add('good');el('feedback').className='feedback good';el('feedback').textContent=['Super!','Genau!','Richtig gehört!','Stark!'][Math.floor(Math.random()*4)]; if(streak%3===0) confetti();} else {streak=0;btn.classList.add('bad');document.querySelector(`.choice[data-v="${current.step}"]`)?.classList.add('reveal');el('feedback').className='feedback bad';el('feedback').textContent='Noch nicht. Richtig ist: '+intervals.find(x=>x[1]===current.step)[0];} refreshScore(); }
+  function show(){ if(!current)return; document.querySelector(`.choice[data-v="${current.step}"]`)?.classList.add('reveal'); el('feedback').className='feedback'; el('feedback').textContent='Das Intervall ist: '+intervals.find(x=>x[1]===current.step)[0]; }
+  function refreshScore(){el('score').textContent=score; el('streak').textContent=streak; el('rate').textContent=total?Math.round(right/total*100)+'%':'–'}
+  function drawPiano(){ const p=el('piano'); p.innerHTML=''; let whites=[]; for(let m=48;m<=72;m++)if(!noteNames[m%12].includes('#'))whites.push(m); whites.forEach(m=>{const k=document.createElement('div');k.className='key';k.dataset.m=m;p.appendChild(k)}); const rect=()=>p.getBoundingClientRect(); for(let m=49;m<=71;m++){ if(noteNames[m%12].includes('#')){ const k=document.createElement('div');k.className='key black';k.dataset.m=m; const before=whites.filter(w=>w<m).length; k.style.left=`calc(${before/whites.length*100}% - 2.75%)`; p.appendChild(k);} } }
+  function lightKey(m,ms){ const k=document.querySelector(`.key[data-m="${m}"]`); if(k){k.classList.add('on'); setTimeout(()=>k.classList.remove('on'),ms)} }
+  function confetti(){ for(let i=0;i<34;i++){ const b=document.createElement('div'); b.className='bit'; b.style.left=Math.random()*100+'%'; b.style.top='-20px'; b.style.background=['#fde047','#38bdf8','#f472b6','#34d399'][i%4]; b.style.animationDelay=Math.random()*180+'ms'; el('confetti').appendChild(b); setTimeout(()=>b.remove(),1200); } }
+  el('newBtn').onclick=newInterval; el('replayBtn').onclick=play; el('showBtn').onclick=show; el('level').oninput=updateWheel; el('intervalChecks').onchange=updateWheel; window.addEventListener('resize',updateWheel); build();
+})();
 </script>
 </body>
 </html>
