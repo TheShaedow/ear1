@@ -10,7 +10,7 @@
 .notationPanel{grid-column:1/-1}.notationWrap{background:linear-gradient(180deg,#f8fbff,#e9eef9);border-radius:22px;padding:14px;overflow-x:auto;box-shadow:inset 0 0 0 1px #cbd5e1}.notationSvg{width:100%;min-width:640px;height:170px;display:block}.staffLine{stroke:#18213a;stroke-width:2}.ledgerLine{stroke:#18213a;stroke-width:2}.noteHead{fill:#101631;stroke:#101631;stroke-width:1.5}.noteHead.root{fill:#38bdf8;stroke:#0ea5e9}.noteHead.target{fill:#4ade80;stroke:#16a34a}.noteStem{stroke:#101631;stroke-width:3;stroke-linecap:round}.noteLabel{fill:#334155;font-weight:900;font-size:14px;text-anchor:middle}.clef{fill:#101631;font-size:74px;font-family:Georgia,serif}.notationHint{color:var(--muted);font-size:13px;margin-top:10px}
 .repeatBtn{margin-top:10px}.repeatBtn[disabled]{opacity:.45;cursor:not-allowed}.repeatBtn span{font-size:13px;opacity:.85;margin-left:6px}.soundBox{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.soundBox label{font-size:12px;color:var(--muted);font-weight:800}.soundBox input{width:100%}.soundStatus{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.35}.soundStatus b{color:var(--accent)}
 </style>
-<script src="https://unpkg.com/tone@14.8.49/build/Tone.js"></script>
+<script src="libs/Tone.js"></script>
 </head>
 <body>
 <div class="app">
@@ -75,7 +75,7 @@ async function initPiano(){
       urls:{
         A0:'A0.mp3',C1:'C1.mp3','D#1':'Ds1.mp3','F#1':'Fs1.mp3',A1:'A1.mp3',C2:'C2.mp3','D#2':'Ds2.mp3','F#2':'Fs2.mp3',A2:'A2.mp3',C3:'C3.mp3','D#3':'Ds3.mp3','F#3':'Fs3.mp3',A3:'A3.mp3',C4:'C4.mp3','D#4':'Ds4.mp3','F#4':'Fs4.mp3',A4:'A4.mp3',C5:'C5.mp3','D#5':'Ds5.mp3','F#5':'Fs5.mp3',A5:'A5.mp3',C6:'C6.mp3','D#6':'Ds6.mp3','F#6':'Fs6.mp3',A6:'A6.mp3',C7:'C7.mp3','D#7':'Ds7.mp3','F#7':'Fs7.mp3',A7:'A7.mp3',C8:'C8.mp3'
       },
-      baseUrl:'https://tonejs.github.io/audio/salamander/',
+      baseUrl:'samples/salamander/',
       release:1.8,
       attack:0.005,
       onload:()=>{pianoReady=true;pianoLoading=false;status.innerHTML='🎹 Klang: <b>Grand Piano Samples aktiv</b>';}
